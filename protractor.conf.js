@@ -1,12 +1,12 @@
 const
-    glob         = require('glob'),
-    protractor   = require.resolve('protractor'),
+    glob = require('glob'),
+    protractor = require.resolve('protractor'),
     node_modules = protractor.substring(0, protractor.lastIndexOf('node_modules') + 'node_modules'.length),
-    seleniumJar  = glob.sync(`${node_modules}/protractor/**/selenium-server-standalone-*.jar`).pop();
+    seleniumJar = glob.sync(`${node_modules}/protractor/**/selenium-server-standalone-*.jar`).pop();
 
 exports.config = {
 
-    baseUrl: 'http://todomvc.com',
+    baseUrl: 'http://localhost:8080/home',
 
     seleniumServerJar: seleniumJar,
 
@@ -21,12 +21,14 @@ exports.config = {
     framework: 'custom',
     frameworkPath: require.resolve('protractor-cucumber-framework'),
 
-    specs: [ 'features/**/*.feature' ],
+    specs: ['features/**/tmswaybill.feature'],
+
+    ignoreSynchronization: true,
 
     cucumberOpts: {
-        require:    [ 'features/**/*.ts' ],
-        format:     'pretty',
-        compiler:   'ts:ts-node/register'
+        require: ['env.js', 'features/**/*.ts', 'spec/*.ts','screenplay/*/*.ts'],
+        format: 'pretty',
+        compiler: 'ts:ts-node/register'
     },
 
     capabilities: {

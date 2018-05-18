@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": [ "es5", "es6" ],
+    "target": "es6",
+    "lib": ["es5", "es6"],
     "module": "commonjs",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -9,14 +9,10 @@
     "declaration": true,
     "outDir": "./staging/transpiled"
   },
-
   "include": [
-    "src/**/*.ts",
-    "spec/**/*.ts"
+    "**/*.ts"
   ],
-
   "exclude": [
-    "node_modules",
-    "examples"
+    "node_modules"
   ]
 }
